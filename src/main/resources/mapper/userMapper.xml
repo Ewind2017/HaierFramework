@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.trs.user.dao.IUserDao">
+    <resultMap id="BaseResultMap" type="com.trs.user.pojo.User">
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="getUserById" resultMap="BaseResultMap" resultType="com.trs.user.pojo.User">
+        select * from hr_user where id = #{0}
+    </select>
+
+    <select id="listUser" resultMap="BaseResultMap" resultType="com.trs.user.pojo.User">
+        select * from hr_user
+    </select>
+
+    <select id="countUser" resultType="java.lang.Integer">
+        select count(id) as userCount from hr_user
+    </select>
+
+    <insert id="saveUser" parameterType="com.trs.user.pojo.User">
+        insert into hr_user(name,password)
+        values (#{name},#{password})
+    </insert>
+
+    <delete id="removeUser" parameterType="java.lang.Integer">
+        delete from hr_user where id = #{0}
+    </delete>
+
+    <update id="updateUser" parameterType="java.lang.String">
+        update hr_user set password = #{0}
+    </update>
+
+</mapper>
