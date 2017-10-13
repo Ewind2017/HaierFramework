@@ -11,5 +11,5 @@ package com.trs.other.policy;
  */
 
 /*抽象类命名使用 Abstract 或 Base 开头*/
-public class BaseTicket {
+public abstract class BaseTicket {
 }
