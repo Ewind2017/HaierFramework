@@ -1,12 +1,16 @@
 package com.trs.other.string;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Title:
+ * Title:截取拼接字符串中的数字
  * Description:
  * Copyright: 2017 北京拓尔思信息技术股份有限公司 版权所有.保留所有权
  * Company:北京拓尔思信息技术股份有限公司(TRS)
@@ -15,29 +19,42 @@ import java.util.regex.Pattern;
  * Create Time:2017/10/11 09:19
  */
 public class NumFromString {
+
+    private static Log log = LogFactory.getLog(NumFromString.class);
+
     //方法1
     public static void main(String[] args) {
-        String str = "1o2j3n45b6vgg7s8ds9";
-        str = str.trim();
-        String str2 = "";
-        if (str != null && !"".equals(str)) {
-            for (int i = 0; i < str.length(); i++) {
-                if (str.charAt(i) >= 48 && str.charAt(i) <= 57) {
-                    str2 += str.charAt(i);
-                }
+
+        String string = "1o2j3n45b6vgg7s8ds9";
+        string = string.trim();
+
+        StringBuilder stringBuilder = new StringBuilder(string);
+        StringBuilder stringBuilder2 = new StringBuilder();
+
+        for (int i = 0; i < string.length(); i++) {
+            if (stringBuilder.charAt(i) >= 48 && stringBuilder.charAt(i) <= 57) {
+                stringBuilder2.append(stringBuilder.charAt(i));
             }
         }
-        System.out.println(str2);
+
+        String string2 = stringBuilder2.toString();
+
+        log.info(string2);
+
     }
 
     /*注释掉的代码尽量要配合说明，而不是简单的注释掉。*/
 
     //方法2
     /*public static void main(String[] args) {
+
         String a = "1o2j3n45b6vgg7s8ds9";
+
         String regEx = "[^0-9]";
         Pattern p = Pattern.compile(regEx);
+
         Matcher m = p.matcher(a);
+
         System.out.println(m.replaceAll("").trim());
     }*/
 
