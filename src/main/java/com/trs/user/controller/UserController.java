@@ -25,6 +25,9 @@ import java.util.List;
 简单的参数验证
 处理服务级别业务并调用service层
 转发或重定向结果集*/
+/**
+ *
+ */
 @Controller
 public class UserController {
     @Autowired
